@@ -12,7 +12,7 @@
  * @param points - коэффициенты, при h для каждой точки в шаблоне
  * @return коэффициенты в n-точечном шаблоне для производной (в долях шага шаблона h)
  */
-[[nodiscard]]std::vector<double> firstDer(const std::vector<double>& points) noexcept{
+[[nodiscard]] std::vector<double> firstDer(const std::vector<double>& points) noexcept{
     matrix A(points.size());
     for (int i = 0; i < points.size(); i++)
         A[i].resize(points.size());

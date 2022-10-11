@@ -26,8 +26,6 @@ int col_max(const std::vector<std::vector<double>>& A, int col, int n) {
  * @return решение
  */
 std::vector<double> GaussMethod(matrix A, std::vector<double> b) {
-    //TODO: метод гаусса
-    //...
     int n = (int) b.size();
     std::vector<double> res(n, 0);
     for (int i = 0; i < n; ++i) {
