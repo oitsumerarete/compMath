@@ -10,5 +10,4 @@
 using matrix = std::vector<std::vector<double>>;
 
 std::vector<double> GaussMethod(matrix A, std::vector<double> b);
-std::vector<double> gauss(matrix a, std::vector<double> y);
 #endif //LABS_COMP_MATH_GAUSS_METHOD_H
