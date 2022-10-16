@@ -1,0 +1,7 @@
+//
+// Created by Мария on 11.10.2022.
+//
+
+#ifndef LABS_COMP_MATH_NEWTONIAN_INTERPOLATOR_H
+
+#endif //LABS_COMP_MATH_NEWTONIAN_INTERPOLATOR_H
