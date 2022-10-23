@@ -2,13 +2,12 @@
 // Created by Мария on 11.10.2022.
 //
 
-#include "newtonian_interpolator.h"
 #include <vector>
 #include "../tools/gauss_method.h"
 class NewtonianInterpolator {
     /*** Какие-то поля ***/
 private:
-    int size;
+    unsigned int size;
     std::vector<double> dataX;
     std::vector<double> dataY;
 public:
@@ -39,12 +38,10 @@ public:
     [[nodiscard]] double interpolate(double x) const {
         double calcValue = 0;
         matrix dTable = div_diff(dataX, dataY);
-
         for (int i = 0; i < size; i++) {
             double tmp = 1;
-            for (int j = 0; j < i; j++) {
+            for (int j = 0; j < i; j++)
                 tmp *= x - dataX[j];
-            }
             tmp *= dTable[i][i];
             calcValue += tmp;
         }
