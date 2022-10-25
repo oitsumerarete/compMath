@@ -2,6 +2,7 @@
 // Created by Мария on 26.09.2022.
 //
 #include <iostream>
+#include "limits"
 #include "gauss_method.h"
 #include "cmath"
 
@@ -31,7 +32,7 @@ std::vector<double> GaussMethod(matrix A, std::vector<double> b) {
     for (int i = 0; i < n; ++i) {
         A[i].push_back(b[i]);
     }
-    const int num_cols = A[0].size();
+    const unsigned int num_cols = A[0].size();
     for (int i = 0; i < n - 1; ++i) {
         unsigned int imax = col_max(A, i, n);
         if (i != imax) {
@@ -45,7 +46,7 @@ std::vector<double> GaussMethod(matrix A, std::vector<double> b) {
         }
     }
     for (int i = n - 1; i >= 0; --i) {
-        if (std::abs(A[i][i]) < 0.0001) throw std::exception();
+        if (std::abs(A[i][i]) < std::numeric_limits<double>::min()) throw std::exception();
         for (int j = i + 1; j < n; ++j) {
             A[i][n] -= A[i][j] * res[j];
         }
