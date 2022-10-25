@@ -4,6 +4,7 @@
 #include "vector"
 #ifndef LABS_COMP_MATH_THREEDIAGONALSOLVER_H
 #define LABS_COMP_MATH_THREEDIAGONALSOLVER_H
+#include <iostream>
 using matrix = std::vector<std::vector<double>>;
 std::vector<double> ThreeDiagonalSolver(matrix A, std::vector<double> b);
 #endif //LABS_COMP_MATH_THREEDIAGONALSOLVER_H

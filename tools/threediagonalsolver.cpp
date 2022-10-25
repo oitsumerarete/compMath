@@ -3,8 +3,10 @@
 //
 
 #include "threediagonalsolver.h"
+
 std::vector<double> ThreeDiagonalSolver(matrix A, std::vector<double> b) {
     double y;
+    if (A.size() == 0 || A.size() != b.size()) {std::cout << "gbgtw" << '\n'; return std::vector<double>(0);}
     int n = static_cast<int>(b.size());
     std::vector<double> a(n), B(n);
     y = A[0][0];

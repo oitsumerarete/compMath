@@ -11,7 +11,8 @@ class CubicSpline {
     /*** Какие-то поля ***/
 private:
     unsigned int size;
-    std::vector<double> x, y, a1,b1,c1,d1;
+    std::vector<double> x, y, a1,c1;
+    std::vector<double> b1, d1;
     matrix he;
 public:
 
@@ -20,6 +21,8 @@ public:
         size = xArr.size();
         x = xArr;
         y = yArr;
+        b1 = std::vector<double>(size - 1);
+        d1 = std::vector<double>(size - 1);
         std::vector<double>a(size-1), b(size-1), c(size-1), d(size-1), f_1(size-1), f_2(size-2  );
         std::vector<double>h(size-1);
 
@@ -30,8 +33,9 @@ public:
         matrix A(size-2);
         for (int i = 0; i<size-2; i++)
             A[i].resize(size-2);
-        A[0][0] = 2;
+
         if (size > 2) {
+            A[0][0] = 2;
             A[0][1] = h[1] / (h[1] + h[0]);
 
             for (int i = 1; i < size - 3; i++) {
@@ -42,7 +46,6 @@ public:
             A[size - 3][size - 4] = h[size - 3] / (h[size - 3] + h[size - 2]);
             A[size - 3][size - 3] = 2;
         }
-
 
         f_1[0] = (y[1] - y[0]) / h[0];
         for (int i = 2; i < size; i++) {
@@ -66,10 +69,10 @@ public:
         for (int i = 0; i<y.size()-1; i++)
             a[i] = y[i+1];
         a1 = a;
-        b1 = b;
         c1 = c;
-        d1 = d;
         he = A;
+        b1 = b;
+        d1 = d;
     }
 
     /*** Метод, выполняющий подсчет интерполянта в точке ***/
@@ -83,7 +86,6 @@ public:
             }
         }
         throw std::exception();
-
     }
     matrix help(){
         return he;
