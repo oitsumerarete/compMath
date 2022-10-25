@@ -19,7 +19,7 @@ public:
     explicit CubicSpline(const std::vector<double>& xArr, const std::vector<double>& yArr)noexcept{
         size = static_cast<int>(xArr.size());
         x = xArr;
-        std::vector<double>a(size-1), b(size-1), c(size-1, 0), d(size-1), f_1(size-1), f_2(size-2);
+        std::vector<double>a(size-1), b(size-1), c(size-1), d(size-1), f_1(size-1), f_2(size-2);
         std::vector<double>h(size-1);
 
 

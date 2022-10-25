@@ -3,7 +3,6 @@
 //
 
 #include "threediagonalsolver.h"
-#include <array>
 //реализация метода прогонки
 std::vector<double> ThreeDiagonalSolver(matrix A, std::vector<double> b) {
     double y;
