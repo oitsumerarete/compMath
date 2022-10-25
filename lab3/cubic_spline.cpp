@@ -54,7 +54,7 @@ public:
             f_20[i] = 6 * f_2[i];
         c = ThreeDiagonalSolver(A, f_20);
         }
-        c[size-1] = 0;
+        c[size-2] = 0;
 
         b[0] = f_1[0] + (c[0]*h[0]/3);
         d[0] = c[0]/h[0];
