@@ -3,17 +3,20 @@
 //
 
 #include "threediagonalsolver.h"
-
+#include <array>
+//реализация метода прогонки
 std::vector<double> ThreeDiagonalSolver(matrix A, std::vector<double> b) {
     double y;
-    if (A.size() == 0 || A.size() != b.size()) {std::cout << "gbgtw" << '\n'; return std::vector<double>(0);}
+    if (A.size() == 0 || A.size() != b.size()) {std::cout << "null matrix" << '\n'; return std::vector<double>(0);}
     int n = static_cast<int>(b.size());
-    std::vector<double> a(n), B(n);
+
+    std::vector<double> a(n-1), B(n-1);
     y = A[0][0];
     a[0] = - A[0][1]/y;
     B[0] = b[0]/y;
     for (int i = 1; i< n-1; i++){
         y = A[i][i] + A[i][i-1]*a[i-1];
+        a[i] = -A[i][i+1]/y;
         B[i] = (b[i]-A[i][i-1]*B[i-1])/y;
     }
     std::vector<double> res(n);
@@ -21,4 +24,7 @@ std::vector<double> ThreeDiagonalSolver(matrix A, std::vector<double> b) {
     for (int i = n-2; i>=0; i--)
         res[i]= a[i]*res[i+1]+B[i];
     return res;
+
+
+
 }
