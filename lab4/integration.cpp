@@ -23,7 +23,7 @@
         }
         else if (n==4){
             x = {(-1)*sqrt(double(3)/7+double(2)/7*sqrt(double(6)/5)), -sqrt(double(3)/7 - double(2)/7*sqrt(double(6)/5)),
-                 (-1)*x[1], x[0]*(-1)};
+                 sqrt(double(3)/7 - double(2)/7*sqrt(double(6)/5)), sqrt(double(3)/7+double(2)/7*sqrt(double(6)/5))};
             omega = {(18-sqrt(30))/36, (18+sqrt(30))/36, (18+sqrt(30))/36, (18-sqrt(30))/36};
         }
         else if (n==5){

@@ -19,7 +19,7 @@ public:
     explicit CubicSpline(const std::vector<double>& xArr, const std::vector<double>& yArr)noexcept{
         size = static_cast<int>(xArr.size());
         x = xArr;
-        std::vector<double>a(size-1), b(size-1), c(size-1), d(size-1), f_1(size-1), f_2(size-2);
+        std::vector<double>a(size-1), b(size-1), c(size-2), d(size-1), f_1(size-1), f_2(size-2);
         std::vector<double>h(size-1);
 
 
@@ -54,7 +54,7 @@ public:
             f_20[i] = 6 * f_2[i];
         c = ThreeDiagonalSolver(A, f_20);
         }
-        c[size-2] = 0;
+        c.push_back(0);
 
         b[0] = f_1[0] + (c[0]*h[0]/3);
         d[0] = c[0]/h[0];
@@ -78,20 +78,20 @@ public:
 
     /*** Метод, выполняющий подсчет интерполянта в точке ***/
     [[nodiscard]] double interpolate(double x0) const{
-        if (size>2){
-        for (int i = 0; i < size; i++) {
-            if (x0 < x[i] && i != 0) {
-                const double arg = (x0 - x[i]);
-                const double arg2 = arg * arg;
-                const double arg3 = arg2 * arg;
-                return a1[i-1] + b1[i-1] * arg + (c1[i-1]/2) * arg2 + (d1[i-1]/6) * arg3;
+        if (size>2) {
+            if ((x0 >= x[0]) && (x0 <= x.back())) {
+                for (int i = 0; i < size; i++) {
+                    if (x[i] > x0) {
+                        const double arg = (x0 - x[i]);
+                        const double arg2 = arg * arg;
+                        const double arg3 = arg2 * arg;
+                        return a1[i - 1] + b1[i - 1] * arg + (c1[i - 1] / 2) * arg2 + (d1[i - 1] / 6) * arg3;
+                    }
+                }
             }
-        }
-            }
-        else {
+        } else {
             return a1[0] + b1[0]*(x0 - x[1]) + (c1[0]/2) * (x0 - x[1])* (x0 - x[1]) + (d1[0]/6)*(x0 - x[1]) * (x0 - x[1]) * (x0 - x[1]);
         }
-        throw std::exception();
     }
 
     matrix help(){

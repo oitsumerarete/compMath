@@ -9,7 +9,7 @@ std::vector<double> ThreeDiagonalSolver(matrix A, std::vector<double> b) {
     if (A.size() == 0 || A.size() != b.size()) {std::cout << "null matrix" << '\n'; return std::vector<double>(0);}
     int n = static_cast<int>(b.size());
 
-    std::vector<double> a(n-1), B(n-1);
+    std::vector<double> a(n), B(n);
     y = A[0][0];
     a[0] = - A[0][1]/y;
     B[0] = b[0]/y;

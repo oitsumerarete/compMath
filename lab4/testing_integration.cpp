@@ -22,10 +22,14 @@ int main(){
         mistakes_5[i] = fabs(integrate(0, 10, 5, i, func) - sin(10));
 
     }
-    std::cout <<  "           3          " << "4         " << "5 " << std::endl;
+    /*std::cout <<  "           3          " << "4         " << "5 " << std::endl;
     for (int i = 0; i < steps.size(); i++)
     {
         std::cout << steps[i] + 1 << " " << " " << mistakes_3[i] << " " << mistakes_4[i] << " " << mistakes_5[i] << std::endl;
+    }*/
+    for (int i = 0; i < steps.size(); i++)
+    {
+        std:: cout << mistakes_4[i] << std::endl;
     }
     return 0;
 }
