@@ -7,8 +7,12 @@
 #include <functional>
 #include <cmath>
 #include <iostream>
+#include <iomanip>
+
 
 [[nodiscard]] double simpleIterationMethod(double inital, const std::function<double(double)> & func, double tau, unsigned numberOfIterations) noexcept;
-double calc_error(double inital, const std::function<double(double)> &func, const std::function<double(double)> &func_deriv, double tau, unsigned numberOfIterations);
+void calc_error(double inital, const std::function<double(double)> &func, double tau, double solution, unsigned numberOfIterations);
+double calc_error_tau(double inital, const std::function<double(double)> &func, const std::function<double(double)> &func_deriv, double tau, unsigned numberOfIterations);
+void variate_tau(double inital, const std::function<double(double)> &func, const std::function<double(double)> &func_deriv, unsigned numberOfIterations);
 
 #endif //LABS_COMP_MATH_SIMPLEITERATION_H
