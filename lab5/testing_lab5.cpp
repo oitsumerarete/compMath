@@ -8,6 +8,7 @@
 
 #include "dikhotomy.h"
 #include "simpleIteration.h"
+#include "newtonMethod.h"
 
 double pi =  3.1415926535;
 
@@ -33,6 +34,7 @@ double func3_deriv(double x){
 }
 
 int main(){
+    /*
     std::cout << "bisection method for first" << std::endl;
     for (unsigned i = 1; i<100; i++){
     double res = bisectionMethod(0, 10, func1, i);
@@ -60,9 +62,29 @@ int main(){
         std::cout << "res: " << res << " solution: " << std::abs(-tan(res) + 4 * res / pi) << std::endl;
         std::cout << std::endl;
     }
-
-
-
-
+*/
+//    for (unsigned i = 1; i < 100; i++){
+//        std::cout << std::endl;
+//        std::cout << "NUM OF ITERATIONS " << i << std::endl;
+//        double res = newtonMethod(0.8, func2, i, 0.6);
+//        std::cout << "res: " << res << " solution: " << std::abs(-tan(res) + 4 * res / pi) << std::endl;
+//        std::cout << std::endl;
+//    }
+//    std::cout <<"newton for first func" << std::endl;
+//    for (unsigned i = 1; i < 100; i++){
+//        std::cout << std::endl;
+//        std::cout << "NUM OF ITERATIONS " << i << std::endl;
+//        double res = newtonMethod(2, func1, i, 0.71);
+//        std::cout << "res: " << res << " solution: " << std::abs(res-0.1*std::sin(res)-pi/4) << std::endl;
+//        std::cout << std::endl;
+//    }
+    std::cout <<"newton for third func" << std::endl;
+    for (unsigned i = 1; i < 1000; i+=20){
+        std::cout << std::endl;
+        std::cout << "NUM OF ITERATIONS " << i << std::endl;
+        double res = newtonMethod(0.001, func3, i, 0.002);
+        std::cout << "res: " << res << " solution: " << std::abs(std::log(std::cosh(res))) << std::endl;
+        std::cout << std::endl;
+    }
     return 0;
 }

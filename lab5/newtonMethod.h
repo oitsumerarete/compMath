@@ -12,5 +12,5 @@
 * Производную стоит оценить численно (предложите схему не ниже 2 порядка самостоятельно)
 **/
 #include "functional"
-[[nodiscard]] double newtonMethod(double inital, const std::function<double(double)> & func, unsigned numberOfIterations) noexcept;
+[[nodiscard]] double newtonMethod(double inital, const std::function<double(double)> & func, unsigned numberOfIterations, double h) noexcept;
 #endif //LABS_COMP_MATH_NEWTONMETHOD_H
